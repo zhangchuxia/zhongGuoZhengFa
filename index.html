@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <!-- 优先使用 IE 最新版本和 Chrome -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <script type="text/javascript">
+            var psdw=1920;
+            function getRem(prem, pwidth) {
+                document.querySelector('html').style.fontSize = window.innerWidth / pwidth * prem + "px";
+            }
+            getRem(100, psdw);
+            window.onresize = function() {
+                location.reload()
+            }
+        </script>
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title></title>
+    </head>
+    <body>
+        <div id="app" class="main">
+            <div class="type" v-text="type"></div>
+            <!-- 头部标题，时间 -->
+            <v-header class="header" :time="header.time" :weather="header.weather" logo="./img/logo.png"></v-header>
+            <!--今日借阅 -->
+            <v-today-borrow :uuid="page.uuid1" :info="todayBorrow"></v-today-borrow>
+            <!--本周借阅 -->
+            <v-week-borrow :uuid="page.uuid2" :info="weekBorrow"></v-week-borrow>
+            <!--本月借阅 -->
+            <v-month-borrow :uuid="page.uuid3" :info="monthBorrow"></v-month-borrow>
+        </div>
+        <script src="tool/vue.min.js"></script>
+        <script src="tool/axios.min.js"></script>
+        <script src="tool/echarts.min.js"></script>
+        <script src="tool/TweenMax.min.js"></script>
+        <script src="tool/countUp.js"></script>
+        <script src="lib/common.js"></script>
+        <!-- 各个公用组件 -->
+        <script src="lib/com-figure.js"></script>
+        <script src="lib/com-hor-bar.js"></script>
+        <script src="lib/com-ver-bar.js"></script>
+        <script src="lib/com-list.js"></script>
+        <!-- 各个模块组件 -->
+        <script src="lib/module-header.js"></script>
+        <script src="lib/module-today-borrow.js"></script>
+        <script src="lib/module-week-borrow.js"></script>
+        <script src="lib/module-month-borrow.js"></script>
+        <script src="lib/index.js"></script>
+    </body>
+</html>
